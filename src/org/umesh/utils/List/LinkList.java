@@ -111,6 +111,49 @@ public class LinkList {
 		
 	}
 	
+	//first list node index of data 
+	public ListNode firstIndexOf( int data) {
+		ListNode cur = head ;
+		while ( cur != null) {
+			if(cur.data == data) {
+				return cur;
+			}
+			cur = cur.next;
+		}
+		return null;
+	}
+	
+	//last listnode reference in list containing data
+	public ListNode lastIndexOf(int data) {
+		ListNode cur = head;
+		ListNode prev = null;
+		while ( cur != null) {
+			if( cur.data == data) {
+				prev = cur;
+			}
+			cur = cur.next;
+		}
+		return prev;
+	}
+	
+	//first position of data in list 
+	public int indexOf(int data) {
+		int index = -1;
+		ListNode cur = head;
+		while( cur != null) {
+			index++;
+			if( cur.data == data)
+				return index;
+			cur = cur.next;
+		}
+		return -1;
+	}
+		
+	public void clear() {
+		head = null;
+		
+	}
+	
 	public int size() {
 		int count = 0;
 		ListNode cur = head;
