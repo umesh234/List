@@ -45,6 +45,21 @@ public class LinkList {
 		str.append("}");
 		return str.toString();
 	}
+
+	public String toString(ListNode l) {
+		StringBuilder str = new StringBuilder();
+		str.append(" { ");
+		ListNode cur = l ;
+		while( cur != null) {
+			str.append (cur.data);
+			str.append (",");
+			cur = cur.next;
+		}
+		str.deleteCharAt(str.length()-1);
+		str.append("}");
+		return str.toString();
+	}
+	
 	
 	public boolean append(int data) {
 		if ( head == null) {
@@ -110,6 +125,82 @@ public class LinkList {
 		return back;
 		
 	}
+	
+	// ListNode containing index last occurrence of data 
+	public ListNode fromLast( int data, int index) {
+		
+		//check parameter sanity 
+		if( index < 0 ) return null ;
+		if( index ==0 ) return lastIndexOf(data);
+		
+		ListNode front = head;
+		while( index > 0 && front != null) {
+			if( front.data == data) {
+				index--;
+			}
+			front = front.next;
+		}// front points one node ahead to index_th occurrence of data 
+		
+		if( index > 0) 
+			return null;
+		
+		ListNode back = null;
+		while ( front != null) {
+			if ( front.data == data) {
+				//increment back till next data is found
+				do { 
+					if( back == null)
+						back = head;
+					else
+						back = back.next;
+				}while( back.data != data) ;
+					
+			}
+			front = front.next;
+		}
+		
+		return back;
+	}
+	
+	// index of containing index last occurrence of data 
+		public int fromLastIndex( int data, int index) {
+			
+			//check parameter sanity 
+			if( index < 0 ) return -1 ;
+			if( index ==0 ) return indexOf(data);
+			int c = -1;
+			ListNode front = head;
+			while( index > 0 && front != null) {
+				if( front.data == data) {
+					index--;
+				}
+				front = front.next;
+			}// front points one node ahead to index_th occurrence of data 
+			
+			if( index > 0) 
+				return -1 ;
+			
+			ListNode back = null;
+			while ( front != null) {
+				if ( front.data == data) {
+					//increment back till next data is found
+					do { 
+						if( back == null) {
+							back = head;
+							c = 0;
+						}
+						else
+							back = back.next;
+						c++;
+					}while( back.data != data) ;
+						
+				}
+				front = front.next;
+			}
+			
+			return c;
+		}
+		
 	
 	//first list node index of data 
 	public ListNode firstIndexOf( int data) {

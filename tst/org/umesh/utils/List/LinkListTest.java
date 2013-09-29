@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import org.umesh.utils.List.LinkList.ListNode;
 
 @RunWith(Parameterized.class)
 public class LinkListTest {
@@ -45,7 +46,39 @@ public class LinkListTest {
 	public void testLists() {
 		LinkList l = new LinkList(3,4,5,6);
 		System.out.println(l);
-		testFromLast(l);
+		//testFromLast(l);
+		testFromlast1(l);
+		
+	}
+	
+	//bad unit testing
+	public void testFromlast1(LinkList l ) {
+		LinkList l2 = new LinkList(3,4,3,4,5);
+		 {
+			 ListNode ll = l2.fromLast(3, -1);
+			 int k = l2.fromLastIndex(3, -1);
+			 System.out.println(" -" + l2.toString(ll) + k );
+		 }
+		 {
+			 ListNode ll = l2.fromLast(3, 0);
+			 int k = l2.fromLastIndex(3, 0);
+			 System.out.println(" -" + l2.toString(ll) + k );
+		 }
+		 {
+			 ListNode ll = l2.fromLast(3, 1);
+			 int k = l2.fromLastIndex(3, 1);
+			 System.out.println(" -" + l2.toString(ll) + k );
+		 }
+		 {
+			 ListNode ll = l2.fromLast(3, 2);
+			 int k = l2.fromLastIndex(3, 2);
+			 System.out.println(" -" + l2.toString(ll) + k );
+		 }
+		 {
+			 ListNode ll = l2.fromLast(3, 3);
+			 int k = l2.fromLastIndex(3, 3);
+			 System.out.println(" -" + l2.toString(ll) + k );
+		 }
 	}
 	
 	public void testFromLast(LinkList l) {
